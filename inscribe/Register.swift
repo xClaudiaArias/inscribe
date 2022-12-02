@@ -9,10 +9,6 @@ import UIKit
 
 class Register: UIViewController {
     
-//    create a uniqueID
- 
-    
-    
     var fName = ""
     var lName = ""
     var email = ""
@@ -20,8 +16,8 @@ class Register: UIViewController {
     var password = ""
     
     
-    let cxt = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    // user credanials array
+    let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // user credentials array
     var userAttr: [User]?
     
     
@@ -65,7 +61,7 @@ class Register: UIViewController {
     
     
     func checkPassword(_ thePassword: String) -> Bool {
-        let passregex = "^(?=.*[A-Z])(?=.*[!@#$\\.&*])(?=.*[a-z].*[a-z].*[a-z]).{8}$"
+        let passregex = "^(?=.*[A-Z])(?=.*[!@#$\\.&*])(?=.*[a-z].*[a-z].*[a-z]).{8,20}$"
         
         let passwordPred = NSPredicate(format:"SELF MATCHES %@", passregex)
         return passwordPred.evaluate(with: thePassword)
@@ -73,7 +69,7 @@ class Register: UIViewController {
     
     
     @IBAction func btnRegister(_ sender: Any) {
-        let newUser = User(context: self.cxt)
+        let newUser = User(context: self.ctx)
         
         newUser.firstName = tfFirstName.text
         newUser.lastName = tfLastName.text
@@ -103,7 +99,7 @@ class Register: UIViewController {
                     if newUser.email!.contains(".com") || isValidEmail { //new line
                         print(newUser)
                         do {
-                            try self.cxt.save()
+                            try self.ctx.save()
                         } catch {
                             print(error)
                         }
