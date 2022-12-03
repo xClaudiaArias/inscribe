@@ -59,7 +59,7 @@
                         <imageReference key="selectedImage" image="note" catalog="system" symbolScale="medium"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JAu-0V-fM9">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -167,7 +167,7 @@
                         <outlet property="btnForgot" destination="aRS-et-9fM" id="AGV-sJ-5MH"/>
                         <outlet property="tfPassword" destination="vhu-B1-6cI" id="nCh-UA-gPk"/>
                         <outlet property="tfUsername" destination="XEo-2C-MEs" id="jBH-j1-Peb"/>
-                        <segue destination="zZj-6L-T6R" kind="show" identifier="sgLoginAuth" id="ZL1-l8-FPQ"/>
+                        <segue destination="ALC-SB-NVA" kind="show" identifier="sgLoginAuth" id="GU7-Bw-ANE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="djv-NM-8hd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -289,10 +289,11 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="vEI-oe-U4q"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SjH-Dk-fNI">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NtY-GV-rTc">
+                        <rect key="frame" x="0.0" y="-57" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -524,10 +525,11 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
                         <imageReference key="selectedImage" image="alarm" catalog="system" symbolScale="medium"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kCj-7l-mZH">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ntL-jG-cab">
+                        <rect key="frame" x="0.0" y="-57" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -547,10 +549,11 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
                         <imageReference key="selectedImage" image="photo" catalog="system" symbolScale="medium"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9zj-Tf-s1O">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="coC-0M-2Pz">
+                        <rect key="frame" x="0.0" y="-57" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -566,7 +569,7 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
             <objects>
                 <viewController storyboardIdentifier="settings" id="5hz-kM-ADL" customClass="Settings" customModule="inscribe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g3n-Zp-yzV">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I4K-1n-ons">
@@ -1185,7 +1188,7 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
                         <imageReference key="selectedImage" image="gear" catalog="system" symbolScale="medium"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZTZ-pw-jcK">
-                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1201,7 +1204,6 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
         <segue reference="V46-O5-YeZ"/>
         <segue reference="gKp-OR-O9y"/>
         <segue reference="qnQ-HL-eVk"/>
-        <segue reference="ZL1-l8-FPQ"/>
         <segue reference="boW-Il-gsb"/>
     </inferredMetricsTieBreakers>
     <resources>

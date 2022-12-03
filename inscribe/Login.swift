@@ -99,7 +99,10 @@ class Login: UIViewController {
 //    ------
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            let vcAuth = segue.destination as! ViewController
+        
+        let vc = (self.tabBarController?.viewControllers![0] as? UINavigationController)?.viewControllers[0] as? ViewController
+        
+        
     }
     
 
