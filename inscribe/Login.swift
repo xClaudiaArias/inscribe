@@ -10,12 +10,12 @@ import CoreData
 
 class Login: UIViewController {
 
-
     var username = ""
     var password = ""
     
+    var currentUser = "tomato"
 
-    
+
     @IBOutlet weak var tfUsername: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     
@@ -29,6 +29,8 @@ class Login: UIViewController {
         // Do any additional setup after loading the view.
         username = tfUsername.text!
         password = tfPassword.text!
+       
+        
         // change btns to align left here:
         btnForgot.configuration!.contentInsets = NSDirectionalEdgeInsets(top: 8.0, leading: 8.0, bottom: 0, trailing: 0)
     }
@@ -43,6 +45,7 @@ class Login: UIViewController {
     }
 
     
+    @IBOutlet weak var btnLogin: UIButton!
     @IBAction func btnLogin(_ sender: Any) {
         username = tfUsername.text!
         password = tfPassword.text!
@@ -50,21 +53,20 @@ class Login: UIViewController {
         do {
             let fetchRequest: NSFetchRequest<User>
             fetchRequest = User.fetchRequest()
-            
-            // 👇 dont delete this, you will need it
-            
-//            fetchRequest.predicate = NSPredicate(
-//                format: "name LIKE %@", self.username
-//            )
-            
+        
             let objects = try ctx.fetch(fetchRequest)
-            
+
             for obj in objects {
                 if obj.username == tfUsername.text {
                     print(obj.username!, ":", obj.password!)
                     if tfPassword.text != "" {
                         if obj.password == tfPassword.text {
-                            performSegue(withIdentifier: "sgLoginAuth", sender: nil)
+                            username = obj.username!
+                            currentUser = username
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "sgLogin", sender: UIButton())
+                            }
+
                         }
                         else {
                             let errorAlert = UIAlertController(title: "Password or username is incorrect.", message: "Try again!", preferredStyle: .alert)
@@ -85,27 +87,25 @@ class Login: UIViewController {
                 }
             }
             
-            // 👆 NOW I JUST HAVE TO LOOP THROUGH THE ARRAY TO GET THE ELEMENT THAT MATCHEST MYT PREDICATE
-            // THEN ADD A CONDITIONAL (IF-ELSE) WITH THE CORRECT SEGUE IDENTIFIER (it is not vcAuth)
-            // 👉 performSegue(withIdentifier: "vcAuth", sender: nil)
-            // see if u can use things from VERIFY FN for password ver
-            
         } catch {
             
         }
     }
     
     
-//    ------
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let vc = (self.tabBarController?.viewControllers![0] as? UINavigationController)?.viewControllers[0] as? ViewController
-        
-        
+
+        if segue.identifier == "sgLogin" {
+            let tabBarController = segue.destination as! UITabBarController
+            let navBarController = tabBarController.viewControllers?[0] as! UINavigationController
+            let ve = navBarController.viewControllers.count
+
+            if let vc = navBarController.topViewController as? ViewController {
+                    vc.currentUser = currentUser
+            }
+        }
     }
     
-
 }
 
 

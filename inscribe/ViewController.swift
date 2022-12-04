@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
+    
+//    static let identifier = "ViewController"
+//    static func nib() -> UINib {return UINib(nibName: "ViewController", bundle: nil)}
+//    
+    
 
     // users information
     @IBOutlet weak var ivUserPhoto: UIImageView!
@@ -26,13 +32,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var lbMediaCount: UILabel!
     @IBOutlet weak var lbRecentlyDeletedCount: UILabel!
     
+    // coredata
+    let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // user credentials array
+    var userAttr: [User]?
+    
+    var currentUser = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+    
+        fetchData()
+//        lbFirstName.text = currentUser
 
-        
         // changing button alignment
         btnNotes.configuration!.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 8.0, trailing: 8.0)
         btnReminders.configuration!.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 8.0, trailing: 8.0)
@@ -40,6 +54,26 @@ class ViewController: UIViewController {
         btnRecentlyDeleted.configuration!.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 8.0, trailing: 8.0)
     }
     
+    
+    func fetchData() {
+        do {
+            
+            let fetchRequest: NSFetchRequest<User>
+            fetchRequest = User.fetchRequest()
+            
+            let objects = try ctx.fetch(fetchRequest)
+            
+            for obj in objects {
+                print(obj.username!, ":", obj.password!, " :::in ViewController")
+                if currentUser == obj.username {
+                    lbFirstName.text = obj.firstName!
+                    lbLastName.text = obj.lastName!
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
     
     
     // view buttons
