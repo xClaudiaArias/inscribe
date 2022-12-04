@@ -2,7 +2,7 @@
 //  MyImages+CoreDataProperties.swift
 //  inscribe
 //
-//  Created by Claudia Arias on 11/30/22.
+//  Created by Claudia Arias on 12/4/22.
 //
 //
 

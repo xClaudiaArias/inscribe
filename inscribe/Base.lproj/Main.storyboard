@@ -369,7 +369,7 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
                                 <buttonConfiguration key="configuration" style="plain" title="Notes"/>
                                 <connections>
                                     <action selector="btnNotes:" destination="zZj-6L-T6R" eventType="touchUpInside" id="gUF-aa-voc"/>
-                                    <segue destination="aRX-kZ-azi" kind="show" id="V46-O5-YeZ"/>
+                                    <segue destination="aRX-kZ-azi" kind="show" identifier="sgNotes" id="V46-O5-YeZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-Go-jns">
@@ -379,7 +379,7 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
                                 <buttonConfiguration key="configuration" style="plain" title="Reminders"/>
                                 <connections>
                                     <action selector="btnReminders:" destination="zZj-6L-T6R" eventType="touchUpInside" id="hI1-pC-8fZ"/>
-                                    <segue destination="zzM-jO-Hy6" kind="show" id="qnQ-HL-eVk"/>
+                                    <segue destination="zzM-jO-Hy6" kind="show" identifier="sgReminders" id="qnQ-HL-eVk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mt2-YW-1Tq">
@@ -389,7 +389,7 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
                                 <buttonConfiguration key="configuration" style="plain" title="Media"/>
                                 <connections>
                                     <action selector="btnMedia:" destination="zZj-6L-T6R" eventType="touchUpInside" id="LQu-vM-xVP"/>
-                                    <segue destination="b2d-0p-Gc6" kind="show" id="gKp-OR-O9y"/>
+                                    <segue destination="b2d-0p-Gc6" kind="show" identifier="sgMedia" id="gKp-OR-O9y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJi-gW-ZEc">
@@ -1157,7 +1157,7 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
                                 <buttonConfiguration key="configuration" style="plain" title="Add New"/>
                                 <connections>
                                     <action selector="btnAddNew:" destination="aRX-kZ-azi" eventType="touchUpInside" id="AzY-WF-FT2"/>
-                                    <segue destination="2Qy-rH-HOm" kind="show" id="cvV-di-JJZ"/>
+                                    <segue destination="2Qy-rH-HOm" kind="show" identifier="sgAddNew" id="cvV-di-JJZ"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21512" systemVersion="21G217" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="MyImages" representedClassName="MyImages" syncable="YES">
         <attribute name="imgfile" optional="YES" attributeType="Binary"/>
         <attribute name="title" optional="YES" attributeType="String"/>
@@ -25,8 +25,8 @@
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="username" optional="YES" attributeType="String"/>
-        <relationship name="myimages" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MyImages" inverseName="user" inverseEntity="MyImages"/>
-        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="user" inverseEntity="Note"/>
-        <relationship name="reminder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Reminder" inverseName="user" inverseEntity="Reminder"/>
+        <relationship name="myimages" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="MyImages" inverseName="user" inverseEntity="MyImages"/>
+        <relationship name="note" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Note" inverseName="user" inverseEntity="Note"/>
+        <relationship name="reminder" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reminder" inverseName="user" inverseEntity="Reminder"/>
     </entity>
 </model>

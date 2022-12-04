@@ -98,7 +98,6 @@ class Login: UIViewController {
         if segue.identifier == "sgLogin" {
             let tabBarController = segue.destination as! UITabBarController
             let navBarController = tabBarController.viewControllers?[0] as! UINavigationController
-            let ve = navBarController.viewControllers.count
 
             if let vc = navBarController.topViewController as? ViewController {
                     vc.currentUser = currentUser

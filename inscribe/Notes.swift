@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class tvCellOrg: UITableViewCell {
     @IBOutlet weak var lbNoteTitle: UILabel!
@@ -15,6 +16,8 @@ class tvCellOrg: UITableViewCell {
 
 class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var currentUser = ""
+    
     // user profile
     @IBOutlet weak var ivUserPhoto: UIImageView!
     @IBOutlet weak var lbFirstName: UILabel!
@@ -22,9 +25,28 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var lbDates: UILabel!
     @IBOutlet weak var lbDescription: UILabel!
     
+    // user context
+    
+    let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // user credentials array
+    var userAttr: [User]?
+    var notes: [Notes]?
+
+    
     // tableview
     
     @IBOutlet weak var tvNotes: UITableView!
+    
+    func fetchUsers() {
+        do {
+            try self.userAttr = ctx.fetch(User.fetchRequest())
+            DispatchQueue.main.async {
+                self.tvNotes.reloadData()
+            }
+        } catch {
+
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -39,6 +61,31 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // add new btn
     @IBOutlet weak var btnAddNew: UIButton!
     @IBAction func btnAddNew(_ sender: Any) {
+       
+        
+        
+        
+    }
+    
+    
+    func fetchData() {
+        do {
+            
+            let fetchRequest: NSFetchRequest<User>
+            fetchRequest = User.fetchRequest()
+            
+            let objects = try ctx.fetch(fetchRequest)
+            
+            for obj in objects {
+                print(obj.username!, ":", obj.password!, " :::in ViewController")
+                if currentUser == obj.username {
+                    lbFirstName.text = obj.firstName!
+                    lbLastName.text = obj.lastName!
+                }
+            }
+        } catch {
+            print(error)
+        }
     }
     
     // table view functions
@@ -59,6 +106,15 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         return cellOrg
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "sgAddNew" {
+            if let vc = segue.destination as? NotesExpanded {
+                    vc.currentUser = currentUser
+            }
+        }
     }
     
 }

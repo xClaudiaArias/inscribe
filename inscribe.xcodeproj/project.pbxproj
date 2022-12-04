@@ -18,14 +18,14 @@
 		504347F9292B2FE600BEBBBA /* RemindersExpanded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504347F8292B2FE600BEBBBA /* RemindersExpanded.swift */; };
 		504347FB292B307600BEBBBA /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504347FA292B307600BEBBBA /* Login.swift */; };
 		504347FD292B309000BEBBBA /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504347FC292B309000BEBBBA /* Register.swift */; };
-		50615A71293831260035327A /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50615A69293831250035327A /* Reminder+CoreDataClass.swift */; };
-		50615A72293831260035327A /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50615A6A293831250035327A /* Reminder+CoreDataProperties.swift */; };
-		50615A73293831260035327A /* MyImages+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50615A6B293831250035327A /* MyImages+CoreDataClass.swift */; };
-		50615A74293831260035327A /* MyImages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50615A6C293831250035327A /* MyImages+CoreDataProperties.swift */; };
-		50615A75293831260035327A /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50615A6D293831260035327A /* User+CoreDataClass.swift */; };
-		50615A76293831260035327A /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50615A6E293831260035327A /* User+CoreDataProperties.swift */; };
-		50615A77293831260035327A /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50615A6F293831260035327A /* Note+CoreDataClass.swift */; };
-		50615A78293831260035327A /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50615A70293831260035327A /* Note+CoreDataProperties.swift */; };
+		50AD6067293D589500B7516F /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD605F293D589400B7516F /* Note+CoreDataClass.swift */; };
+		50AD6068293D589500B7516F /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD6060293D589400B7516F /* Note+CoreDataProperties.swift */; };
+		50AD6069293D589500B7516F /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD6061293D589400B7516F /* Reminder+CoreDataClass.swift */; };
+		50AD606A293D589500B7516F /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD6062293D589400B7516F /* Reminder+CoreDataProperties.swift */; };
+		50AD606B293D589500B7516F /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD6063293D589400B7516F /* User+CoreDataClass.swift */; };
+		50AD606C293D589500B7516F /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD6064293D589400B7516F /* User+CoreDataProperties.swift */; };
+		50AD606D293D589500B7516F /* MyImages+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD6065293D589400B7516F /* MyImages+CoreDataClass.swift */; };
+		50AD606E293D589500B7516F /* MyImages+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD6066293D589400B7516F /* MyImages+CoreDataProperties.swift */; };
 		50CE81212921CF620003B377 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE81202921CF620003B377 /* AppDelegate.swift */; };
 		50CE81232921CF620003B377 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE81222921CF620003B377 /* SceneDelegate.swift */; };
 		50CE81252921CF620003B377 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CE81242921CF620003B377 /* ViewController.swift */; };
@@ -46,14 +46,14 @@
 		504347F8292B2FE600BEBBBA /* RemindersExpanded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersExpanded.swift; sourceTree = "<group>"; };
 		504347FA292B307600BEBBBA /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		504347FC292B309000BEBBBA /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
-		50615A69293831250035327A /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataClass.swift"; path = "../../Reminder+CoreDataClass.swift"; sourceTree = "<group>"; };
-		50615A6A293831250035327A /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataProperties.swift"; path = "../../Reminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		50615A6B293831250035327A /* MyImages+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyImages+CoreDataClass.swift"; path = "../../MyImages+CoreDataClass.swift"; sourceTree = "<group>"; };
-		50615A6C293831250035327A /* MyImages+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyImages+CoreDataProperties.swift"; path = "../../MyImages+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		50615A6D293831260035327A /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "../../User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		50615A6E293831260035327A /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../../User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		50615A6F293831260035327A /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "../../Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		50615A70293831260035327A /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "../../Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		50AD605F293D589400B7516F /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "../../Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		50AD6060293D589400B7516F /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "../../Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		50AD6061293D589400B7516F /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataClass.swift"; path = "../../Reminder+CoreDataClass.swift"; sourceTree = "<group>"; };
+		50AD6062293D589400B7516F /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataProperties.swift"; path = "../../Reminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		50AD6063293D589400B7516F /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "../../User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		50AD6064293D589400B7516F /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../../User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		50AD6065293D589400B7516F /* MyImages+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyImages+CoreDataClass.swift"; path = "../../MyImages+CoreDataClass.swift"; sourceTree = "<group>"; };
+		50AD6066293D589400B7516F /* MyImages+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyImages+CoreDataProperties.swift"; path = "../../MyImages+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		50CE811D2921CF620003B377 /* inscribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inscribe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50CE81202921CF620003B377 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50CE81222921CF620003B377 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,14 +78,14 @@
 		50214BD82935BC0000191F4A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				50615A69293831250035327A /* Reminder+CoreDataClass.swift */,
-				50615A6A293831250035327A /* Reminder+CoreDataProperties.swift */,
-				50615A6B293831250035327A /* MyImages+CoreDataClass.swift */,
-				50615A6C293831250035327A /* MyImages+CoreDataProperties.swift */,
-				50615A6D293831260035327A /* User+CoreDataClass.swift */,
-				50615A6E293831260035327A /* User+CoreDataProperties.swift */,
-				50615A6F293831260035327A /* Note+CoreDataClass.swift */,
-				50615A70293831260035327A /* Note+CoreDataProperties.swift */,
+				50AD605F293D589400B7516F /* Note+CoreDataClass.swift */,
+				50AD6060293D589400B7516F /* Note+CoreDataProperties.swift */,
+				50AD6061293D589400B7516F /* Reminder+CoreDataClass.swift */,
+				50AD6062293D589400B7516F /* Reminder+CoreDataProperties.swift */,
+				50AD6063293D589400B7516F /* User+CoreDataClass.swift */,
+				50AD6064293D589400B7516F /* User+CoreDataProperties.swift */,
+				50AD6065293D589400B7516F /* MyImages+CoreDataClass.swift */,
+				50AD6066293D589400B7516F /* MyImages+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,25 +206,25 @@
 				504347F5292B2F1F00BEBBBA /* NotesExpanded.swift in Sources */,
 				504347F7292B2FBD00BEBBBA /* MediaExpanded.swift in Sources */,
 				504347F9292B2FE600BEBBBA /* RemindersExpanded.swift in Sources */,
-				50615A75293831260035327A /* User+CoreDataClass.swift in Sources */,
-				50615A73293831260035327A /* MyImages+CoreDataClass.swift in Sources */,
+				50AD606D293D589500B7516F /* MyImages+CoreDataClass.swift in Sources */,
+				50AD606B293D589500B7516F /* User+CoreDataClass.swift in Sources */,
 				50CE81252921CF620003B377 /* ViewController.swift in Sources */,
-				50615A74293831260035327A /* MyImages+CoreDataProperties.swift in Sources */,
 				50214BDB2935BC6F00191F4A /* User.xcdatamodeld in Sources */,
 				50CE81212921CF620003B377 /* AppDelegate.swift in Sources */,
-				50615A71293831260035327A /* Reminder+CoreDataClass.swift in Sources */,
-				50615A72293831260035327A /* Reminder+CoreDataProperties.swift in Sources */,
-				50615A78293831260035327A /* Note+CoreDataProperties.swift in Sources */,
 				50CE81232921CF620003B377 /* SceneDelegate.swift in Sources */,
 				504347FD292B309000BEBBBA /* Register.swift in Sources */,
 				504347F1292B2EE000BEBBBA /* Reminders.swift in Sources */,
+				50AD6068293D589500B7516F /* Note+CoreDataProperties.swift in Sources */,
 				504347F3292B2EF500BEBBBA /* Settings.swift in Sources */,
-				50615A77293831260035327A /* Note+CoreDataClass.swift in Sources */,
 				504347ED292B2E9800BEBBBA /* Notes.swift in Sources */,
+				50AD6069293D589500B7516F /* Reminder+CoreDataClass.swift in Sources */,
 				504347FB292B307600BEBBBA /* Login.swift in Sources */,
+				50AD6067293D589500B7516F /* Note+CoreDataClass.swift in Sources */,
+				50AD606E293D589500B7516F /* MyImages+CoreDataProperties.swift in Sources */,
 				504347EF292B2EC700BEBBBA /* Media.swift in Sources */,
-				50615A76293831260035327A /* User+CoreDataProperties.swift in Sources */,
 				50214BD72935B44100191F4A /* MediaCellVC.swift in Sources */,
+				50AD606C293D589500B7516F /* User+CoreDataProperties.swift in Sources */,
+				50AD606A293D589500B7516F /* Reminder+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

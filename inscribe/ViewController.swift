@@ -64,7 +64,7 @@ class ViewController: UIViewController {
             let objects = try ctx.fetch(fetchRequest)
             
             for obj in objects {
-                print(obj.username!, ":", obj.password!, " :::in ViewController")
+//                print(obj.username!, ":", obj.password!, " :::in ViewController")
                 if currentUser == obj.username {
                     lbFirstName.text = obj.firstName!
                     lbLastName.text = obj.lastName!
@@ -76,10 +76,22 @@ class ViewController: UIViewController {
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "sgNotes" {
+            if let nt = segue.destination as? Notes {
+                nt.currentUser = currentUser
+            }
+        }
+    }
+
+    
     // view buttons
     // -- notes:
     @IBOutlet weak var btnNotes: UIButton!
     @IBAction func btnNotes(_ sender: Any) {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "sgNotes", sender: UIButton())
+        }
     }
     // -- reminders:
     @IBOutlet weak var btnReminders: UIButton!
