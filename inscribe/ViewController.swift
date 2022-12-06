@@ -9,11 +9,6 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-    
-//    static let identifier = "ViewController"
-//    static func nib() -> UINib {return UINib(nibName: "ViewController", bundle: nil)}
-//    
-    
 
     // users information
     @IBOutlet weak var ivUserPhoto: UIImageView!
@@ -42,10 +37,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     
         fetchData()
-//        lbFirstName.text = currentUser
 
         // changing button alignment
         btnNotes.configuration!.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 8.0, trailing: 8.0)
@@ -64,7 +57,6 @@ class ViewController: UIViewController {
             let objects = try ctx.fetch(fetchRequest)
             
             for obj in objects {
-//                print(obj.username!, ":", obj.password!, " :::in ViewController")
                 if currentUser == obj.username {
                     lbFirstName.text = obj.firstName!
                     lbLastName.text = obj.lastName!
@@ -78,6 +70,7 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "sgNotes" {
+            guard let send = sender as? UIButton else {return}
             if let nt = segue.destination as? Notes {
                 nt.currentUser = currentUser
             }
@@ -89,9 +82,6 @@ class ViewController: UIViewController {
     // -- notes:
     @IBOutlet weak var btnNotes: UIButton!
     @IBAction func btnNotes(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "sgNotes", sender: UIButton())
-        }
     }
     // -- reminders:
     @IBOutlet weak var btnReminders: UIButton!

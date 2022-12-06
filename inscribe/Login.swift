@@ -13,14 +13,13 @@ class Login: UIViewController {
     var username = ""
     var password = ""
     
-    var currentUser = "tomato"
+    var currentUser = ""
 
 
     @IBOutlet weak var tfUsername: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     
     let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    // user credentials array
     var userAttr: [User]?
 
 

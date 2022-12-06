@@ -21,8 +21,6 @@ class NotesExpanded: UIViewController {
     
     @IBOutlet weak var lbDate: UILabel!
     @IBOutlet weak var tfNoteTitle: UITextField!
-    
-    
     @IBOutlet weak var tfNote: UITextView!
     
     
@@ -56,12 +54,6 @@ class NotesExpanded: UIViewController {
                         print(error)
                     }
                 }
-            }
-            
-            do {
-                try self.ctx.save()
-            } catch {
-                print(error)
             }
         } catch {
             print(error)
