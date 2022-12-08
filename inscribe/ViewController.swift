@@ -75,6 +75,13 @@ class ViewController: UIViewController {
                 nt.currentUser = currentUser
             }
         }
+        
+        if segue.identifier == "sgReminders" {
+//            guard let send = sender as? UIButton else {return}
+            if let rem = segue.destination as? RemindersVC {
+                rem.currentUser = currentUser
+            }
+        }
     }
 
     

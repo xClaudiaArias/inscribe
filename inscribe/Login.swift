@@ -96,11 +96,32 @@ class Login: UIViewController {
 
         if segue.identifier == "sgLogin" {
             let tabBarController = segue.destination as! UITabBarController
+            //view controller
             let navBarController = tabBarController.viewControllers?[0] as! UINavigationController
 
             if let vc = navBarController.topViewController as? ViewController {
                     vc.currentUser = currentUser
             }
+            
+            // notes vc
+            let noteNav = tabBarController.viewControllers?[1] as! UINavigationController
+            let mediaNav = tabBarController.viewControllers?[2] as! UINavigationController
+            let remindersNav = tabBarController.viewControllers?[3] as! UINavigationController
+            let settingsNav = tabBarController.viewControllers?[4] as! UINavigationController
+            
+            if let noteVC = noteNav.topViewController as? Notes {
+                noteVC.currentUser = currentUser
+            }
+            
+            print(tabBarController.viewControllers, " tabBar Controllers")
+            print(remindersNav, " remindersNavvvvvv")
+            
+            
+            if let remindersVC = remindersNav.topViewController as? RemindersVC {
+                remindersVC.currentUser = currentUser
+            }
+            
+
         }
     }
     

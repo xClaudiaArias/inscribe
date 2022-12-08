@@ -23,8 +23,8 @@
                         <tabBarAppearance key="standardAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="pxs-tE-yF6" kind="relationship" relationship="viewControllers" id="OBi-gS-l0m"/>
-                        <segue destination="ozW-KB-tlg" kind="relationship" relationship="viewControllers" id="sjI-bf-tOL"/>
+                        <segue destination="pxs-tE-yF6" kind="relationship" relationship="viewControllers" destinationCreationSelector="ViewController" id="OBi-gS-l0m"/>
+                        <segue destination="ozW-KB-tlg" kind="relationship" relationship="viewControllers" destinationCreationSelector="Notes" id="sjI-bf-tOL"/>
                         <segue destination="Qne-s3-1Yx" kind="relationship" relationship="viewControllers" id="TSZ-DU-K4O"/>
                         <segue destination="tj5-VT-mHb" kind="relationship" relationship="viewControllers" id="iYq-yI-mQF"/>
                         <segue destination="6c4-mf-RLF" kind="relationship" relationship="viewControllers" id="OFm-NN-n7u"/>
@@ -722,10 +722,10 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
             </objects>
             <point key="canvasLocation" x="187.69230769230768" y="241.70616113744074"/>
         </scene>
-        <!--Reminders-->
+        <!--RemindersVC-->
         <scene sceneID="omG-d0-4ze">
             <objects>
-                <viewController storyboardIdentifier="reminders" id="zzM-jO-Hy6" customClass="Reminders" customModule="inscribe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zzM-jO-Hy6" customClass="RemindersVC" customModule="inscribe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g2z-VH-0Ic">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -737,78 +737,66 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
                                 <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgR-0R-lF3">
-                                <rect key="frame" x="16" y="147" width="39" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRk-oN-me7">
-                                <rect key="frame" x="339" y="93" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="+"/>
-                                <connections>
-                                    <action selector="btnAddReminder:" destination="zzM-jO-Hy6" eventType="touchUpInside" id="2Y0-h9-Nl7"/>
-                                    <segue destination="AQf-fe-52e" kind="show" id="WuO-GG-oi2"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lnH-Ey-nNV">
-                                <rect key="frame" x="16" y="188" width="358" height="541"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="r1o-vh-OUK">
+                                <rect key="frame" x="16" y="156" width="358" height="616"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="103" id="jPa-DK-qWq" customClass="reminderCell" customModule="inscribe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="358" height="103"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="remindCell" rowHeight="126" id="43h-9f-A09" customClass="reminderCell" customModule="inscribe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="358" height="126"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jPa-DK-qWq" id="Wbe-uI-MeU">
-                                            <rect key="frame" x="0.0" y="0.0" width="358" height="103"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="43h-9f-A09" id="PCh-UK-DYu">
+                                            <rect key="frame" x="0.0" y="0.0" width="358" height="126"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reminder Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUL-jV-1wl">
-                                                    <rect key="frame" x="20" y="11" width="127" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFi-tn-jaN">
+                                                    <rect key="frame" x="20" y="11" width="239" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <color key="textColor" name="AccentColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgl-qV-Omw">
-                                                    <rect key="frame" x="20" y="33" width="324" height="53"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WH-3L-HEH">
+                                                    <rect key="frame" x="20" y="40" width="318" height="75"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <string key="text">Now let's put some happy little clouds in
-here. It's amazing what you can do with a little love in your heart. I want everbody to be happy. That's what it's all about.
-</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiI-ZZ-YT5">
-                                                    <rect key="frame" x="309" y="18" width="29" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-yS-mHm">
+                                                    <rect key="frame" x="238" y="11" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemGray2Color"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lbDate" destination="eiI-ZZ-YT5" id="RQj-Li-tvd"/>
-                                            <outlet property="lbDesc" destination="Vgl-qV-Omw" id="dj2-GK-6wQ"/>
-                                            <outlet property="lbTitle" destination="MUL-jV-1wl" id="a46-im-lCs"/>
+                                            <outlet property="lbDescription" destination="4WH-3L-HEH" id="V5p-L7-N5P"/>
+                                            <outlet property="lbDt" destination="hrE-yS-mHm" id="l3V-tp-NAV"/>
+                                            <outlet property="lbTitle" destination="yFi-tn-jaN" id="QOM-H6-NXT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSm-1E-I40">
+                                <rect key="frame" x="319" y="91" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="+"/>
+                                <connections>
+                                    <action selector="btnAdd:" destination="zzM-jO-Hy6" eventType="touchUpInside" id="nmW-Lc-XmQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u30-Nb-g61"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="n81-lL-CpW"/>
                     <connections>
-                        <outlet property="btnAddReminder" destination="FRk-oN-me7" id="SPe-vz-frc"/>
-                        <outlet property="lbDate" destination="JgR-0R-lF3" id="eQk-5s-58O"/>
-                        <outlet property="tvReminder" destination="lnH-Ey-nNV" id="PoC-NM-AXa"/>
+                        <outlet property="btnAdd" destination="dSm-1E-I40" id="3U5-1s-Jja"/>
+                        <outlet property="tvReminders" destination="r1o-vh-OUK" id="LFg-Ar-Oze"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHv-rH-h8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -818,7 +806,7 @@ here. It's amazing what you can do with a little love in your heart. I want ever
         <!--Media-->
         <scene sceneID="2UW-4h-da1">
             <objects>
-                <viewController storyboardIdentifier="media" id="b2d-0p-Gc6" customClass="Media" customModule="inscribe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="b2d-0p-Gc6" customClass="Media" customModule="inscribe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PS6-2M-NeG">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -946,7 +934,7 @@ here. It's amazing what you can do with a little love in your heart. I want ever
                         <viewLayoutGuide key="safeArea" id="jh4-Gm-gCe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pV1-OK-bqU"/>
+                    <navigationItem key="navigationItem" customizationIdentifier="sgNotesBack" id="pV1-OK-bqU"/>
                     <connections>
                         <outlet property="lbDate" destination="6Pq-PQ-AMT" id="Z1a-C4-8ce"/>
                         <outlet property="tfNote" destination="WTv-au-JSD" id="q5K-da-83y"/>
@@ -1005,63 +993,6 @@ here. It's amazing what you can do with a little love in your heart. I want ever
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nab-8L-vbO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1295" y="973"/>
-        </scene>
-        <!--Reminders Expanded-->
-        <scene sceneID="mbn-es-GtN">
-            <objects>
-                <viewController storyboardIdentifier="remex" id="AQf-fe-52e" customClass="RemindersExpanded" customModule="inscribe" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zct-NS-EYP">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add new reminder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9i-Xt-bWA">
-                                <rect key="frame" x="16" y="88" width="220" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" name="AccentColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OW7-Wl-VwV">
-                                <rect key="frame" x="16" y="144" width="358" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TN8-wz-Y5W">
-                                <rect key="frame" x="16" y="186" width="358" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTF-dw-Fxd">
-                                <rect key="frame" x="16" y="244" width="68" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="dSw-Rf-1GU">
-                                <rect key="frame" x="14" y="272" width="354" height="354"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <locale key="locale" localeIdentifier="en_US"/>
-                                <connections>
-                                    <action selector="dtDatePicker:" destination="AQf-fe-52e" eventType="valueChanged" id="3um-5O-ozq"/>
-                                </connections>
-                            </datePicker>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="AAq-SN-Jfb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dmS-hV-Ddv"/>
-                    <connections>
-                        <outlet property="lbDate" destination="RTF-dw-Fxd" id="yvL-HN-l4v"/>
-                        <outlet property="tfDescription" destination="TN8-wz-Y5W" id="pg0-Zw-Vpd"/>
-                        <outlet property="tfTitle" destination="OW7-Wl-VwV" id="ZqZ-Mc-rpC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LYo-VL-6tg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-572" y="973"/>
         </scene>
         <!--Notes-->
         <scene sceneID="4Pd-I7-D1e">
@@ -1204,7 +1135,7 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VbH-YJ-CWW"/>
+        <segue reference="V46-O5-YeZ"/>
         <segue reference="gKp-OR-O9y"/>
         <segue reference="qnQ-HL-eVk"/>
         <segue reference="Tgl-NL-e30"/>
@@ -1223,6 +1154,9 @@ you want. Without washing the brush, I'm gonna go right into some Van Dyke Brown
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

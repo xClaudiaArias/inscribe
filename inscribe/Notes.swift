@@ -21,8 +21,6 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var currentUser = ""
     var userID = ""
     
-    var cellNums = 0
-    
     // user profile
     @IBOutlet weak var ivUserPhoto: UIImageView!
     @IBOutlet weak var lbFirstName: UILabel!
@@ -82,8 +80,8 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.notes = try ctx.fetch(request)
 
             if self.notes?.contains(where: { $0.user?.username == currentUser}) != nil {
-                    DispatchQueue.main.async {
-                        self.tvNotes.reloadData()
+                DispatchQueue.main.async {
+                    self.tvNotes.reloadData()
                 }
             }
 
@@ -93,15 +91,16 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+
     // add new btn
     @IBOutlet weak var btnAddNew: UIButton!
     @IBAction func btnAddNew(_ sender: Any) {
+        self.fetchNotes()
     }
     
 
     // table view functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        cellNums
         self.notes!.count
     }
     
@@ -114,10 +113,11 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tvNotes.dequeueReusableCell(withIdentifier: "tvCell", for: indexPath) as! tvCellOrg
         
-        var user_notes = self.notes![indexPath.row]
+        let user_notes = self.notes![indexPath.row]
 
         cell.lbNoteTitle.text = user_notes.title
         cell.lbDescription.text = user_notes.note
+
 
         return cell
     }
@@ -130,5 +130,6 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+
 }
 

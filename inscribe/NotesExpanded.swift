@@ -16,6 +16,8 @@ class NotesExpanded: UIViewController {
     // user credentials array
     var userAttr: [User]?
     var notes: [Notes]?
+    
+    let notesVC = Notes()
 
     
     
@@ -27,7 +29,11 @@ class NotesExpanded: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+
     }
+    
+
 
     @IBAction func btnSave(_ sender: Any) {
         do {
@@ -50,6 +56,11 @@ class NotesExpanded: UIViewController {
                         let objects = try ctx.fetch(fetchRequest)
                         try self.ctx.save()
                         
+                        
+                        self.navigationController?.popViewController(animated: true)
+                        self.dismiss(animated: true, completion: nil)
+                        
+                        
                     } catch {
                         print(error)
                     }
@@ -58,6 +69,7 @@ class NotesExpanded: UIViewController {
         } catch {
             print(error)
         }
+
     }
     
 }
