@@ -46,7 +46,7 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             self.reminders = try ctx.fetch(request)
             print(currentUser, " currentUser")
            
-            print(self.reminders?.contains(where: { $0.user?.username == self.currentUser}), "blahbah")
+//            print(self.reminders?.contains(where: { $0.user?.username == self.currentUser}), "blahbah")
             
             if self.reminders?.contains(where: { $0.user?.username == currentUser}) != nil {
                 
