@@ -12,6 +12,7 @@ class tvCellOrg: UITableViewCell {
     @IBOutlet weak var lbNoteTitle: UILabel!
     @IBOutlet weak var lbDate: UILabel!
     @IBOutlet weak var lbDescription: UILabel!
+    @IBOutlet weak var btnViewNote: UIButton!
 }
 
 class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -78,7 +79,7 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let pred = NSPredicate(format: "user.username CONTAINS %@", currentUser)
             request.predicate = pred
             self.notes = try ctx.fetch(request)
-
+            print(self.notes.self, " self.notes.self")
             if self.notes?.contains(where: { $0.user?.username == currentUser}) != nil {
                 DispatchQueue.main.async {
                     self.tvNotes.reloadData()
@@ -89,6 +90,12 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
          catch {
             print(error)
         }
+    }
+    
+    
+    // view note btn
+    
+    @IBAction func btnViewNote(_ sender: Any) {
     }
     
 
@@ -117,16 +124,24 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         cell.lbNoteTitle.text = user_notes.title
         cell.lbDescription.text = user_notes.note
+        
+        
 
 
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         if segue.identifier == "sgAddNew" {
             if let vc = segue.destination as? NotesExpanded {
-                    vc.currentUser = currentUser
+                vc.currentUser = currentUser
+            }
+        }
+        
+        if segue.identifier == "sgViewNote" {
+            if let vn = segue.destination as? IndividualNotesVC {
+                vn.currentUser = currentUser
             }
         }
     }

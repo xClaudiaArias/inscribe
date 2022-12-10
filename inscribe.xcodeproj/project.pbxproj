@@ -18,6 +18,7 @@
 		504347FB292B307600BEBBBA /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504347FA292B307600BEBBBA /* Login.swift */; };
 		504347FD292B309000BEBBBA /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504347FC292B309000BEBBBA /* Register.swift */; };
 		507C45D42941537A00E36F9C /* RemindersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507C45D32941537A00E36F9C /* RemindersVC.swift */; };
+		507F1DD42943EAB8004FF3BF /* IndividualNotesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507F1DD32943EAB8004FF3BF /* IndividualNotesVC.swift */; };
 		50AD6067293D589500B7516F /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD605F293D589400B7516F /* Note+CoreDataClass.swift */; };
 		50AD6068293D589500B7516F /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD6060293D589400B7516F /* Note+CoreDataProperties.swift */; };
 		50AD6069293D589500B7516F /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AD6061293D589400B7516F /* Reminder+CoreDataClass.swift */; };
@@ -46,6 +47,7 @@
 		504347FA292B307600BEBBBA /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		504347FC292B309000BEBBBA /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		507C45D32941537A00E36F9C /* RemindersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersVC.swift; sourceTree = "<group>"; };
+		507F1DD32943EAB8004FF3BF /* IndividualNotesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualNotesVC.swift; sourceTree = "<group>"; };
 		50AD605F293D589400B7516F /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "../../Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		50AD6060293D589400B7516F /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "../../Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		50AD6061293D589400B7516F /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataClass.swift"; path = "../../Reminder+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				50CE81222921CF620003B377 /* SceneDelegate.swift */,
 				50CE81242921CF620003B377 /* ViewController.swift */,
 				50CE81262921CF620003B377 /* Main.storyboard */,
+				507F1DD32943EAB8004FF3BF /* IndividualNotesVC.swift */,
 				504347FA292B307600BEBBBA /* Login.swift */,
 				504347EE292B2EC700BEBBBA /* Media.swift */,
 				50214BD62935B44100191F4A /* MediaCellVC.swift */,
@@ -206,6 +209,7 @@
 				507C45D42941537A00E36F9C /* RemindersVC.swift in Sources */,
 				504347F5292B2F1F00BEBBBA /* NotesExpanded.swift in Sources */,
 				504347F7292B2FBD00BEBBBA /* MediaExpanded.swift in Sources */,
+				507F1DD42943EAB8004FF3BF /* IndividualNotesVC.swift in Sources */,
 				504347F9292B2FE600BEBBBA /* RemindersExpanded.swift in Sources */,
 				50AD606D293D589500B7516F /* MyImages+CoreDataClass.swift in Sources */,
 				50AD606B293D589500B7516F /* User+CoreDataClass.swift in Sources */,
