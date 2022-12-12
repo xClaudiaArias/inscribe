@@ -8,6 +8,15 @@
 import UIKit
 import CoreData
 
+extension Date {
+    func rmstring(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+}
+
+
 //cells
 class reminderCell: UITableViewCell {
     
@@ -19,12 +28,12 @@ class reminderCell: UITableViewCell {
 class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var currentUser = ""
-    
-    
+
     let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     // user credentials array
     var userAttr: [User]?
     var reminders: [Reminder]?
+    let currentDateTime = Date()
     
     
     @IBOutlet weak var tvReminders: UITableView!
@@ -32,6 +41,7 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
         tvReminders.dataSource = self
         tvReminders.delegate = self
         self.fetchReminders()
@@ -46,8 +56,6 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             self.reminders = try ctx.fetch(request)
             print(currentUser, " currentUser")
            
-//            print(self.reminders?.contains(where: { $0.user?.username == self.currentUser}), "blahbah")
-            
             if self.reminders?.contains(where: { $0.user?.username == currentUser}) != nil {
                 
                 DispatchQueue.main.async {
@@ -60,13 +68,17 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     
+    @objc func dismissOnTapOutside(){
+       self.dismiss(animated: true, completion: nil)
+    }
     
+    // add btn
     @IBOutlet weak var btnAdd: UIButton!
     @IBAction func btnAdd(_ sender: Any) {
-        
-        
+    
         
         let popUp =  UIAlertController(title: "Reminders", message: "Add a new reminder", preferredStyle: .alert)
+
                 
         do {
             let fetchRequest: NSFetchRequest<User>
@@ -78,16 +90,20 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
                 if obj.username == currentUser {
                     popUp.addTextField{(textField) in textField.placeholder = "Reminder"}
                     popUp.addTextField{(textField) in textField.placeholder = "Description"}
-                    popUp.addTextField{(textField) in textField.placeholder = "Date"}
+
+
+
                     
                     let submitBtn = UIAlertAction(title: "Add Reminder", style: .default) {
                         (action) in
                         let newReminder = Reminder(context: self.ctx)
                         newReminder.title = popUp.textFields![0].text
                         newReminder.attribute = popUp.textFields![1].text
-                        newReminder.date = popUp.textFields![2].text
+                        newReminder.date = self.currentDateTime.rmstring(format: "MM-dd-yyyy")
                         newReminder.user = obj.self
                         print(newReminder)
+
+                        
                         do {
                             
                             if newReminder.user?.username == self.currentUser {
@@ -98,11 +114,16 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
                         } catch {
                             print(error)
                         }
+                        
+                        
                         self.fetchReminders()
                     }
                     popUp.addAction(submitBtn)
-                    self.present(popUp, animated: true)
-
+                    
+                    self.present(popUp, animated: true, completion: {
+                        popUp.view.superview?.isUserInteractionEnabled = true
+                        popUp.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(self.dismissOnTapOutside)))
+                    })
                        
                 }
             }
@@ -114,7 +135,7 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
     // delete items by swiping
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completionHandler) in
+        let deleteBtn = UIContextualAction(style: .destructive, title: "Delete") {(deleteBtn, view, completionHandler) in
             
             let reminderDelete = self.reminders![indexPath.row]
             self.ctx.delete(reminderDelete)
@@ -128,10 +149,21 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             //  we need to fetch again to refresh the list
             self.fetchReminders()
         }
+        
+        let strikeBtn = UIContextualAction(style: .normal, title: "Complete") {(strikeBtn, view, completionHandler) in
+            
+            let strike = self.reminders![indexPath.row]
+            
+            
+            
+            
+            
+        }
                                         
-        return UISwipeActionsConfiguration(actions: [action])
+        return UISwipeActionsConfiguration(actions: [deleteBtn, strikeBtn])
     }
     
+
     // edit item
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // row content -- item
@@ -142,22 +174,23 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         let popUp = UIAlertController(title: "Edit", message: "", preferredStyle: .alert)
         popUp.addTextField{(textField) in textField.placeholder = "Title"}
         popUp.addTextField{(textField) in textField.placeholder = "Description"}
-        popUp.addTextField{(textField) in textField.placeholder = "Date"}
+//        popUp.addTextField{(textField) in textField.placeholder = "Date"}
         
         // getting the field values
         let lbTitle = popUp.textFields![0]
         let lbDescription = popUp.textFields![1]
-        let lbDt = popUp.textFields![2]
+//        var lbDt = self.currentDateTime.string(format: "MM-dd-yyyy")
         
         lbTitle.text = rem.title
         lbDescription.text = rem.description
-        lbDt.text = rem.date
+//        lbDt = self.currentDateTime.string(format: "MM-dd-yyyy")
+    
         
-        // save it back when using edit BUTTON
+        // save it back when using the edit BUTTON
         let saveBtn = UIAlertAction(title: "Update", style: .default) { (action) in
             rem.title = popUp.textFields![0].text
             rem.attribute = popUp.textFields![1].text
-            rem.date = popUp.textFields![2].text
+            rem.date = self.currentDateTime.rmstring(format: "MM-dd-yyyy")
             // fetch reminder again to refresh data
             do {
                 try self.ctx.save()
@@ -169,6 +202,7 @@ class RemindersVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         popUp.addAction(saveBtn)
         self.present(popUp, animated: true)
     }
+    
     
     
     

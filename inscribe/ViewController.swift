@@ -8,6 +8,14 @@
 import UIKit
 import CoreData
 
+extension Date {
+    func vcstring(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+}
+
 class ViewController: UIViewController {
 
     // users information
@@ -17,10 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lbDescription: UILabel!
     
     // date
-    @IBOutlet weak var lbMonth: UILabel!
-    @IBOutlet weak var lbDay: UILabel!
-    @IBOutlet weak var lbYear: UILabel!
-    
+    @IBOutlet weak var lbDatr: UILabel!
     // count labels
     @IBOutlet weak var lbNotesCount: UILabel!
     @IBOutlet weak var lbRemindersCount: UILabel!
@@ -29,15 +34,14 @@ class ViewController: UIViewController {
     
     // coredata
     let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    // user credentials array
     var userAttr: [User]?
-    
     var currentUser = ""
+    let currentDateTime = Date()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        lbDatr.text = self.currentDateTime.vcstring(format: "MM-dd-yyyy")
         fetchData()
 
         // changing button alignment

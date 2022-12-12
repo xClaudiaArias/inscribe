@@ -8,6 +8,15 @@
 import UIKit
 import CoreData
 
+
+extension Date {
+    func ntxstring(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+}
+
 class NotesExpanded: UIViewController {
     
     var currentUser = ""
@@ -18,7 +27,7 @@ class NotesExpanded: UIViewController {
     var notes: [Notes]?
     
     let notesVC = Notes()
-
+    let currentDateTime = Date()
     
     
     @IBOutlet weak var lbDate: UILabel!
@@ -29,7 +38,7 @@ class NotesExpanded: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        lbDate.text = self.currentDateTime.ntxstring(format: "MM-dd-yyyy")
 
     }
     
@@ -52,6 +61,7 @@ class NotesExpanded: UIViewController {
                         newNote.title = tfNoteTitle.text
                         newNote.note = tfNote.text
                         newNote.user = obj.self
+                        newNote.date = self.currentDateTime.ntxstring(format: "MM-dd-yyyy")
                         
                         let objects = try ctx.fetch(fetchRequest)
                         try self.ctx.save()

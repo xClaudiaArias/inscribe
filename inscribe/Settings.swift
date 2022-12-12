@@ -8,7 +8,13 @@
 import UIKit
 import CoreData
 
-
+extension Date {
+    func ststring(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+}
 
 class Settings: UIViewController {
     
@@ -18,7 +24,7 @@ class Settings: UIViewController {
     let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     // user credentials array
     var userAttr: [User]?
-
+    let currentDateTime = Date()
     
     @IBOutlet weak var ivPFP: UIImageView!
     @IBOutlet weak var lbFirst: UILabel!
@@ -39,7 +45,7 @@ class Settings: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(currentUser, " :currentUser")
+        lbDate.text = self.currentDateTime.ststring(format: "MM-dd-yyyy")
         fetchUser()
         // Do any additional setup after loading the view.
         btnChangePFP.configuration!.contentInsets = NSDirectionalEdgeInsets(top: 8.0, leading: 8.0, bottom: 0, trailing: 0)
@@ -57,7 +63,7 @@ class Settings: UIViewController {
                 if obj.username == currentUser {
                     lbFirst.text = obj.firstName
                     lbLast.text = obj.lastName
-                    lbDate.text = "12/13/2022" // temporary date
+                    lbDate.text = self.currentDateTime.ststring(format: "MM-dd-yyyy")
                 }
             }
         } catch {

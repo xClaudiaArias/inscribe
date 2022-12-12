@@ -15,12 +15,20 @@ class tvCellOrg: UITableViewCell {
     @IBOutlet weak var btnViewNote: UIButton!
 }
 
+extension Date {
+    func ntstring(format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+}
+
 class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     
     var currentUser = ""
-    var userID = ""
+    let currentDateTime = Date()
     
     // user profile
     @IBOutlet weak var ivUserPhoto: UIImageView!
@@ -32,7 +40,6 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // user context
     
     let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    // user credentials array
     var userAttr: [User]?
     var notes: [Note]?
 
@@ -46,6 +53,7 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbDates.text = self.currentDateTime.ntstring(format: "MM-dd-yyyy")
         tvNotes.delegate = self
         tvNotes.dataSource = self
         self.fetchNotes()
@@ -124,6 +132,7 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         cell.lbNoteTitle.text = user_notes.title
         cell.lbDescription.text = user_notes.note
+        cell.lbDate.text = self.currentDateTime.vcstring(format: "MM-dd-yyyy")
         
         
 
