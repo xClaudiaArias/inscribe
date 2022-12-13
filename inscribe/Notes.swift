@@ -66,6 +66,13 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.fetchNotes()
+        
+    }
+    
 
 
     func fetchNotes() {

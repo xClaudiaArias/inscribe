@@ -19,12 +19,13 @@ extension Date {
 
 class NotesExpanded: UIViewController {
     
+    
     var currentUser = ""
     
     let ctx = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     // user credentials array
     var userAttr: [User]?
-    var notes: [Notes]?
+    var notes: [Note]?
     
     let notesVC = Notes()
     let currentDateTime = Date()
@@ -41,10 +42,10 @@ class NotesExpanded: UIViewController {
         lbDate.text = self.currentDateTime.ntxstring(format: "MM-dd-yyyy")
 
     }
+
     
-
-
-    @IBAction func btnSave(_ sender: Any) {
+    
+    func createNote() {
         do {
             let reqUser: NSFetchRequest<User>
             reqUser = User.fetchRequest()
@@ -79,8 +80,29 @@ class NotesExpanded: UIViewController {
         } catch {
             print(error)
         }
-
     }
+    
+
+
+    @IBAction func btnSave(_ sender: Any) {
+        createNote()
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "saveNoteBtn" {
+//            let ntVC = segue.destination as? Notes
+//
+////            do {
+////                try self.notes = ctx.fetch(Note.fetchRequest())
+////                DispatchQueue.main.async {
+////                    ntVC?.fetchNotes()
+////                }
+////            } catch {
+////
+////            }
+//
+//        }
+//    }
     
 }
 
