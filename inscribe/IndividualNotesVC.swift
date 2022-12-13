@@ -6,27 +6,25 @@
 //
 
 import UIKit
-
-extension Date {
-    func intstring(format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
-    }
-}
+import CoreData
 
 class IndividualNotesVC: UIViewController {
     
     var currentUser = ""
-    var currentNote = ""
-    
-    @IBOutlet weak var lbDate: UILabel!
-    @IBOutlet weak var lbTitle: UILabel!
+    var noteTitle = ""
+    var dt = ""
+    var post = ""
+
+    @IBOutlet weak var lbNoteTitle: UILabel!
+    @IBOutlet weak var lbDt: UILabel!
     @IBOutlet weak var lbPost: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        lbNoteTitle.text = noteTitle
+        lbDt.text = dt
+        lbPost.text = post
         // Do any additional setup after loading the view.
     }
     

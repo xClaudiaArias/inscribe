@@ -113,10 +113,6 @@ class Login: UIViewController {
                 noteVC.currentUser = currentUser
             }
             
-//            print(tabBarController.viewControllers, " tabBar Controllers")
-//            print(remindersNav, " remindersNavvvvvv")
-            
-            
             if let remindersVC = remindersNav.topViewController as? RemindersVC {
                 remindersVC.currentUser = currentUser
             }

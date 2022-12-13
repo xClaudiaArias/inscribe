@@ -28,6 +28,9 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     var currentUser = ""
+    var noteTitle = ""
+    var post = ""
+    var dt = ""
     let currentDateTime = Date()
     
     // user profile
@@ -87,7 +90,7 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let pred = NSPredicate(format: "user.username CONTAINS %@", currentUser)
             request.predicate = pred
             self.notes = try ctx.fetch(request)
-            print(self.notes.self, " self.notes.self")
+
             if self.notes?.contains(where: { $0.user?.username == currentUser}) != nil {
                 DispatchQueue.main.async {
                     self.tvNotes.reloadData()
@@ -98,12 +101,6 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
          catch {
             print(error)
         }
-    }
-    
-    
-    // view note btn
-    
-    @IBAction func btnViewNote(_ sender: Any) {
     }
     
 
@@ -123,7 +120,85 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        let nt = self.notes![indexPath.row]
+        
+        noteTitle = nt.title!
+        post = nt.note!
+        dt = nt.date!
+        
+        performSegue(withIdentifier: "sgViewNote", sender: UITableView())
+        
+    }
+    
 
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteBtn = UIContextualAction(style: .destructive, title: "Delete") {(deleteBtn, view, completionHandler) in
+            
+            let noteDelete = self.notes![indexPath.row]
+            self.ctx.delete(noteDelete)
+            
+            // update database
+            do {
+                try self.ctx.save()
+            } catch {
+                
+            }
+            //  we need to fetch again to refresh the list
+            self.fetchNotes()
+            
+        }
+        
+        let editBtn = UIContextualAction(style: .normal, title: "Edit") {(editBtn, view, completionHandler) in
+            
+            let editNote = self.notes![indexPath.row]
+            
+            //            ______________________________________
+            
+            
+            //        change actionsheet to alert if it doesnt work 👇
+            let popUp = UIAlertController(title: "Edit", message: "", preferredStyle: .alert)
+            popUp.addTextField{(textField) in textField.placeholder = "Title"}
+            popUp.addTextField{(textField) in textField.placeholder = "Note"}
+            
+            
+            // getting the field values
+            let lbTitle = popUp.textFields![0]
+            let lbNote = popUp.textFields![1]
+            
+            
+            lbTitle.text = editNote.title
+            lbNote.text = editNote.note
+            
+            let saveBtn = UIAlertAction(title: "Update", style: .default) { (action) in
+                editNote.title = popUp.textFields![0].text
+                editNote.note = popUp.textFields![1].text
+                
+                do {
+                    try self.ctx.save()
+                } catch {
+                    
+                }
+                self.fetchNotes()
+            }
+            popUp.addAction(saveBtn)
+            self.present(popUp, animated: true)
+
+            do {
+                try self.ctx.save()
+            } catch {
+                
+            }
+
+            self.fetchNotes()
+            
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteBtn, editBtn])
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tvNotes.dequeueReusableCell(withIdentifier: "tvCell", for: indexPath) as! tvCellOrg
@@ -132,7 +207,7 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         cell.lbNoteTitle.text = user_notes.title
         cell.lbDescription.text = user_notes.note
-        cell.lbDate.text = self.currentDateTime.vcstring(format: "MM-dd-yyyy")
+        cell.lbDate.text = user_notes.date
         
         
 
@@ -141,6 +216,7 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         
         if segue.identifier == "sgAddNew" {
             if let vc = segue.destination as? NotesExpanded {
@@ -151,6 +227,9 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "sgViewNote" {
             if let vn = segue.destination as? IndividualNotesVC {
                 vn.currentUser = currentUser
+                vn.noteTitle = noteTitle
+                vn.dt = dt
+                vn.post = post
             }
         }
     }
