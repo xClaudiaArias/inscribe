@@ -242,4 +242,3 @@ class Notes: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
 }
-
